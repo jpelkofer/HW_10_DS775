@@ -14,7 +14,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r}
 random <- c(.3039, .7914, .8543, .6902, .3004, .0383)
 
-#unbiased coin
+# a)unbiased coin
 flips <- character()
 for(i in  random){
   if(i <= .50){
@@ -25,7 +25,7 @@ for(i in  random){
   }
 }
 
-#Pitcher 60% strikes, 40% balls
+# b) Pitcher 60% strikes, 40% balls
 pitches <- character()
 for(i in  random){
   if(i <= .60){
@@ -36,16 +36,14 @@ for(i in  random){
   }
 }
 
-#traffic light Green 40%, Yellow 10%, Red 50%
+# c) traffic light Green 40%, Yellow 10%, Red 50%
 lights <- character()
 for(i in random){
   if(i <= .10){
     lights <- c(lights, 'yellow')
-  }
-  if(i > .10 & i <=.50){
+  }else if(i > .10 & i <=.50){
     lights <- c(lights, 'green')
-  }
-  if(i > .50){
+  }else {
     lights <- c(lights, 'red')
   }
 }
@@ -63,25 +61,20 @@ rand <- c(.3004,.0383,.3883,.6052,.2231,.4250,.3729,.7983,.2340,.0082)
 weather <- character()
 yesterday <- 'clear'
 
-for(r in c(.3004,.0383,.3883,.6052,.2231,.4250,.3729,.7983,.2340,.0082)){
-  if(yesterday == 'clear' & .0383 > .20){
+for(r in rand){
+  if(yesterday == 'clear' & r > .20){
+    weather <- c(weather, 'clear')
+    yesterday <- 'clear'
+  }else if(yesterday == 'clear' & r <= .20){
+    weather <- c(weather, 'rainy')
+    yesterday <- 'rainy'
+  }else if(yesterday == 'rainy' & r > .40){
+    weather <- c(weather, 'rainy')
+    yesterday <- 'rainy'
+  }else if(yesterday == 'rainy' & r <= .40){
     weather <- c(weather, 'clear')
     yesterday <- 'clear'
   }
-  if(yesterday == 'clear' & .0383 <= .20){
-    weather <- c(weather, 'rainy')
-    yesterday <- 'rainy'
-  }
-  if(yesterday == 'rainy' & .0383 > .40){
-    weather <- c(weather, 'rainy')
-    yesterday <- 'rainy'
-  }
-  if(yesterday == 'rainy' & .0383 <= .40){
-    weather <- c(weather, 'clear')
-    yesterday <- 'clear'
-  }
-  #print(yesterday)
-  print(paste(weather))
 }
 
 weather
