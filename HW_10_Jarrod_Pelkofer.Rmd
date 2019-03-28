@@ -58,14 +58,33 @@ lights
 
 ##HW 20.1-2 a, b
 ```{r}
-random <- c(.3004,.0383,.3883,.6052,.2231,.4250,.3729,.7983,.2340,.0082)
+rand <- c(.3004,.0383,.3883,.6052,.2231,.4250,.3729,.7983,.2340,.0082)
 
+weather <- character()
+yesterday <- 'clear'
 
+for(r in c(.3004,.0383,.3883,.6052,.2231,.4250,.3729,.7983,.2340,.0082)){
+  if(yesterday == 'clear' & .0383 > .20){
+    weather <- c(weather, 'clear')
+    yesterday <- 'clear'
+  }
+  if(yesterday == 'clear' & .0383 <= .20){
+    weather <- c(weather, 'rainy')
+    yesterday <- 'rainy'
+  }
+  if(yesterday == 'rainy' & .0383 > .40){
+    weather <- c(weather, 'rainy')
+    yesterday <- 'rainy'
+  }
+  if(yesterday == 'rainy' & .0383 <= .40){
+    weather <- c(weather, 'clear')
+    yesterday <- 'clear'
+  }
+  #print(yesterday)
+  print(paste(weather))
+}
 
-
-
-
-
+weather
 
 
 ```
