@@ -161,3 +161,31 @@ b) Average of 3.68 stoves
 c) Similar to 20.1-1 where probability ranges are assigned to the number of stoves being sold. This is illustrated in part d.
 d) .4476 would equal 4 stoves, .9713 would equal 6 stoves, .0629 would equal 2 stoves. This averages to 4 stoves per day which exceeds the 25 day mean by 0.32 stoves
 e) The 300 day simulation resulted in an average of 3.613 stoves per day, .067 stoves/day less than the 25 day average.
+
+##HW 20.4-3
+```{r}
+
+#a)
+print("Part a")
+set.seed(22)
+runif(3, 25, 75)
+
+#b)
+print("Part b")
+set.seed(22)
+obs <- runif(3, -1, 1)
+for(x in obs){
+  u <- (1/16)*(1 + x)^4
+  print(paste("u =", u, " and x =", x))
+}
+
+#c)
+print("Part c")
+set.seed(22)
+obs <- runif(3, 40, 60)
+for(x in obs){
+  u <- (1/400)*(x-40)^2
+  print(paste("u =", u, " and x =", x))
+}
+
+```
