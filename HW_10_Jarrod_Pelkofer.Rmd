@@ -109,3 +109,8 @@ print("weather part b:")
 weather_b
 ```
 
+
+##HW 20.1-3 a, b, c, d, e
+```{r}
+
+```
