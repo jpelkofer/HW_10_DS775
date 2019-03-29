@@ -56,6 +56,8 @@ lights
 
 ##HW 20.1-2 a, b
 ```{r}
+
+#a)
 rand <- c(.3004,.0383,.3883,.6052,.2231,.4250,.3729,.7983,.2340,.0082)
 
 weather <- character()
@@ -77,8 +79,33 @@ for(r in rand){
   }
 }
 
+print("weather part a:")
 weather
 
+#b)
+set.seed(33)
+rand_b <- runif(10, 0, 1)
 
+weather_b <- character()
+yesterday_b <- 'clear'
+
+for(b in rand_b){
+  if(yesterday_b == 'clear' & b > .20){
+    weather_b <- c(weather_b, 'clear')
+    yesterday_b <- 'clear'
+  }else if(yesterday_b == 'clear' & b <= .20){
+    weather_b <- c(weather_b, 'rainy')
+    yesterday_b <- 'rainy'
+  }else if(yesterday_b == 'rainy' & b > .40){
+    weather_b <- c(weather_b, 'rainy')
+    yesterday_b <- 'rainy'
+  }else if(yesterday_b == 'rainy' & b <= .40){
+    weather_b <- c(weather_b, 'clear')
+    yesterday_b <- 'clear'
+  }
+}
+
+print("weather part b:")
+weather_b
 ```
 
