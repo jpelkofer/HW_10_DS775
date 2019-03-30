@@ -189,3 +189,30 @@ for(x in obs){
 }
 
 ```
+
+
+##HW 20.4-11
+```{r}
+#a) and b)
+y <- c(.2655, .3472, .0248, .9205, .6130)
+
+#line between (7,0) and (9,.2): y = .1x -.7
+
+#line between (9,.2) and (11,.8): y = .3x + -2.5
+
+#line between (11,.8) and (13,1): y = .1x -.3
+
+for(r in y){
+  if(r < .2){
+    time <- (r+.7)/.1
+    print(paste('Uniform Random # = ', r, 'Observation = ', time))
+  }else if(r >= .2 & r < .8 ){
+    time <- (r + 2.5)/.3
+    print(paste('Uniform Random # = ', r, 'Observation = ', time))
+  }else{
+    time <- (r + .3)/.1
+    print(paste('Uniform Random # = ', r, 'Observation = ', time))
+  }  
+}
+
+```
