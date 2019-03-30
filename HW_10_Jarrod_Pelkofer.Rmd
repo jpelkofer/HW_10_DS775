@@ -218,4 +218,50 @@ for(r in y){
 ```
 
 
-##HW 20.6
+##HW 20.6-1 a, b, c
+```{r}
+#a)
+set.seed(101)
+simulations <- 100
+
+purchasePrice <- 1.50
+salesPrice <- 2.50
+refundPrice <- 0.50
+
+copiesOrdered <- 60
+
+print('Part a: 100 Simulations')
+for(i in 1:5){
+  copiesSold <- sample(40:70, simulations, replace = TRUE)
+  SalesRevenue <- salesPrice*pmin(copiesOrdered,copiesSold)
+  PurchasingCost <- purchasePrice*copiesOrdered
+  Refund <- refundPrice*pmax(copiesOrdered-copiesSold,0)
+  Profit <- SalesRevenue-PurchasingCost+Refund
+  avgProfit <- mean(Profit)
+  print(avgProfit)
+}
+
+#b)
+set.seed(101)
+simulations <- 1000
+
+purchasePrice <- 1.50
+salesPrice <- 2.50
+refundPrice <- 0.50
+
+copiesOrdered <- 60
+
+print('Part b: 1000 Simulations')
+for(i in 1:5){
+  copiesSold <- sample(40:70, simulations, replace = TRUE)
+  SalesRevenue <- salesPrice*pmin(copiesOrdered,copiesSold)
+  PurchasingCost <- purchasePrice*copiesOrdered
+  Refund <- refundPrice*pmax(copiesOrdered-copiesSold,0)
+  Profit <- SalesRevenue-PurchasingCost+Refund
+  avgProfit <- mean(Profit)
+  print(avgProfit)
+}
+
+```
+
+c) The average profits in part 'a' have a wider range, which the average profits in part 'b' are more consistent.
