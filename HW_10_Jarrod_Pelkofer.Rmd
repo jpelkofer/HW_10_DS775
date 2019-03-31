@@ -303,4 +303,8 @@ avg_NPV
 two_mill <- pnorm(2000000, mean = avg_NPV, sd = sd_NPV, lower.tail = FALSE)
 two_mill
 
+#d)
+#Probability of annual operating profit of at least 0 in all four years
+zero_profit <- pnorm(0, mean = mean(Yr4_cash_flow), sd = sd(Yr4_cash_flow), lower.tail = FALSE)^4
+zero_profit
 ```
