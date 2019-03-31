@@ -264,4 +264,43 @@ for(i in 1:5){
 
 ```
 
-c) The average profits in part 'a' have a wider range, which the average profits in part 'b' are more consistent.
+c) The average profits in part 'a' have a wider range, where the average profits in part 'b' are more consistent.
+
+##HW 20.6-2
+```{r}
+library(triangle)
+library(FinancialMath)
+
+#a)
+set.seed(99)
+land <- -1000000 #cost of land
+construction <- rtriangle(1000, -2400000, -1600000) #cost of construction
+
+#Years 1-4 cash flows
+Yr1_cash_flow <- construction
+Yr2_cash_flow <- rnorm(1000, 700000, 700000)
+Yr3_cash_flow <- rnorm(1000, 700000, 700000)
+Yr4_cash_flow <- rnorm(1000, 700000, 700000)
+
+Yr5_prof_or_loss <- rnorm(1000, 700000, 700000) #Year 5 profit/loss
+sale_price <- runif(1000, 4000000, 8000000) #Estimated Sale Price EOY 5
+
+Yr5_cash_flow <- Yr5_prof_or_loss+sale_price #Year 5 cash flow
+
+#NPV simulated 1000 times
+NPValues <- double()
+for(i in 1:length(sale_price)){
+  NetPresentValue <- NPV(land, c(Yr1_cash_flow[i], Yr2_cash_flow[i], Yr3_cash_flow[i], Yr4_cash_flow[i], Yr5_cash_flow[i]), c(1:5), .10)
+  NPValues <- c(NPValues, NetPresentValue)
+}
+
+#hist(NPValues)
+avg_NPV <- mean(NPValues)
+sd_NPV <- sd(NPValues)
+avg_NPV
+
+#b)
+two_mill <- pnorm(2000000, mean = avg_NPV, sd = sd_NPV, lower.tail = FALSE)
+two_mill
+
+```
