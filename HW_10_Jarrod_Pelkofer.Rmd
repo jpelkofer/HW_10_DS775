@@ -267,7 +267,7 @@ for(i in 1:5){
 c) The average profits in part 'a' have a wider range, where the average profits in part 'b' are more consistent.
 
 ##HW 20.6-2
-```{r}
+```{r, message=F, warning=F}
 library(triangle)
 library(FinancialMath)
 
@@ -290,7 +290,7 @@ Yr5_cash_flow <- Yr5_prof_or_loss+sale_price #Year 5 cash flow
 #NPV simulated 1000 times
 NPValues <- double()
 for(i in 1:length(sale_price)){
-  NetPresentValue <- NPV(land, c(Yr1_cash_flow[i], Yr2_cash_flow[i], Yr3_cash_flow[i], Yr4_cash_flow[i], Yr5_cash_flow[i]), c(1:5), .10)
+  NetPresentValue <- NPV(land, c(Yr1_cash_flow[i], Yr2_cash_flow[i], Yr3_cash_flow[i], Yr4_cash_flow[i], Yr5_cash_flow[i]),         c(1:5), .10)
   NPValues <- c(NPValues, NetPresentValue)
 }
 
@@ -302,6 +302,9 @@ avg_NPV
 #b)
 two_mill <- pnorm(2000000, mean = avg_NPV, sd = sd_NPV, lower.tail = FALSE)
 two_mill
+
+#c)
+min_profits <- c(min(Yr2_cash_flow), min(Yr3_cash_flow), min(Yr4_cash_flow), min(Yr5_prof_or_loss))
 
 #d)
 #Probability of annual operating profit of at least 0 in all four years
