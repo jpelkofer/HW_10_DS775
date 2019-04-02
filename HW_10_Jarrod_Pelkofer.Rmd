@@ -290,7 +290,7 @@ Yr5_cash_flow <- Yr5_prof_or_loss+sale_price #Year 5 cash flow
 #NPV simulated 1000 times
 NPValues <- double()
 for(i in 1:length(sale_price)){
-  NetPresentValue <- NPV(land, c(Yr1_cash_flow[i], Yr2_cash_flow[i], Yr3_cash_flow[i], Yr4_cash_flow[i], Yr5_cash_flow[i]),         c(1:5), .10)
+  NetPresentValue <- NPV(land, c(Yr1_cash_flow[i], Yr2_cash_flow[i], Yr3_cash_flow[i],     Yr4_cash_flow[i], Yr5_cash_flow[i]), c(1:5), .10)
   NPValues <- c(NPValues, NetPresentValue)
 }
 
@@ -300,7 +300,7 @@ sd_NPV <- sd(NPValues)
 avg_NPV
 
 #b)
-two_mill <- pnorm(2000000, mean = avg_NPV, sd = sd_NPV, lower.tail = FALSE)
+two_mill <- sum(NPValues >= 2000000)/1000
 two_mill
 
 #c)
@@ -310,11 +310,18 @@ avg_min
 
 #d)
 #Probability of annual operating profit of at least 0 in all four years
-zero_profit <- pnorm(0, mean = mean(Yr4_cash_flow), sd = sd(Yr4_cash_flow), lower.tail = FALSE)^4
+zero_profit <- (sum(Yr4_cash_flow >= 0)/1000)^4
 zero_profit
 ```
 
+<<<<<<< HEAD
 a) The mean net present value of the project is $2,954,415.
 b) The estimated probability that the project will yield an NPV of $2 million is 77.5%.
 c) The average minimum annual operating profit over four years is actually a loss of $4,956.58.
 d) The probability that the annual operating profit will be at least 0 in all four years of operation is 50.2%.
+=======
+a)	The mean net present value of the project is $2,954,415.
+b)	The estimated probability that the project will yield an NPV of $2 million is 77.6%.
+c)	The average minimum annual operating profit over four years is actually a loss of     $4,956.58.
+d)	The probability that the annual operating profit will be at least 0 in all four years of operation is 49.07%.
+>>>>>>> 52900532ed73440d1f155f90439888a59852d532
