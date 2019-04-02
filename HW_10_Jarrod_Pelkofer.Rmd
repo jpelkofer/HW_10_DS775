@@ -313,3 +313,8 @@ avg_min
 zero_profit <- pnorm(0, mean = mean(Yr4_cash_flow), sd = sd(Yr4_cash_flow), lower.tail = FALSE)^4
 zero_profit
 ```
+
+a) The mean net present value of the project is $2,954,415.
+b) The estimated probability that the project will yield an NPV of $2 million is 77.5%.
+c) The average minimum annual operating profit over four years is actually a loss of $4,956.58.
+d) The probability that the annual operating profit will be at least 0 in all four years of operation is 50.2%.
